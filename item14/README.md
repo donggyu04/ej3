@@ -1,4 +1,4 @@
-#Comparable을 구현할지 고려하라
+# Comparable을 구현할지 고려하라
 Comparable인 터페이스의 compareTo에 대해서 알아보자. compareTo는 동치성 비교에 더해 순서까지 비교할수 있으며 제너릭한다. Comparable을 구현했다는 것은 **자연적인 순서**가 있음을 뜻한다.
 
 ## CompareTo의 규약

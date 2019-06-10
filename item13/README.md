@@ -1,4 +1,4 @@
-#Clone 재정의는 주의해서 진행해라 
+# Clone 재정의는 주의해서 진행해라 
 
 Clonable은 복제해도 되는 믹스인 인퍼페이스이다.
 ```java
@@ -149,7 +149,7 @@ public Type(final Type type) { ... }
 public static Type newInstance(final Type type) { ... }
 ```
 ---
-#요약
+# 요약
 1. 상속용 클래스에 Cloneable을 구현하지 말아라
 2. cloneable을 구현해야할 경우 명세에 맞게 구현해라
     - shallow Copy에 유념하라
