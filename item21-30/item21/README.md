@@ -10,6 +10,31 @@
     - Java 8은 Collection 인터페이스에 디폴트 메서드를 추가했고, 그 결과 기존에 짜여진 많은 자바 코드들이 영향을 받은 것으로 알려짐 (apache SyncronizedCollection.removeIf())
     - 기존 인터페이스에 디폴트 메서드를 추가하는 건 꼭 필요한 경우가 아니라면 심사숙고 해야한다.
     - 새로운 인터페이스 설계시에는 표준적인 메서드 구현을 제공하는데 아주 유용한 수단이다.
+    
+3. 디폴트 메서드가 추가됨으로 인하여 기존에 만들어진 클래스가 의도치 않게 동작할 수 있는 예
+``` java
+class LicensePrefixPrinter implements Printer {
+	@Override
+	public void printHello() {
+		System.out.println("[Apache License] Hello");
+	}
+
+	@Override
+	public void printHi() {
+		System.out.println("[Apache License] Hi");
+	}
+}
+
+interface Printer {
+	public void printHello();
+	public void printHi();
+
+	// Added this default method after LicensePrefixPrinter release.
+	default public void printNice() {
+		System.out.println("Nice");
+	}
+}
+```
 
 > 인터페이스를 릴리즈 한 후라도 결함을 수정하는게 가능한 경우도 있겠지만, 절대 그 가능성에 기대서는 안 된다. (반드시 사전 테스트를 거쳐야 함)
 
