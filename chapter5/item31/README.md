@@ -26,7 +26,7 @@ public static void main() {
 }
 ````
  - 얼핏 보기엔 정상 동작 할 것도 같은 위의 코드는 사실 에러가 난다 
-     - Iterable\<Integer> src와 Stack\<Number>는 서로 관련이 없는 전혀 다른 타입이기 때문 
+     - Iterable\<Integer> src와 Iterable\<Number>는 서로 관련이 없는 전혀 다른 타입이기 때문 
      - Generic은 불공변!
 
 그렇다면 위와 같은 코드를 정상적으로 동작시키기 위해선 어떻게 해야 할까?
@@ -65,13 +65,12 @@ public static void main() {
 pushAll의 경험을 살려 위의 문제를 해결해보자면
 
 popAll의 매개변수가 E의 Collection(`Collection<E>`)가 아니라 E의 상위 타입의 Collection(`Collection<? super E>`)이 되어야 한다.
- - pushAll은 `원소의 생산자(producer)` 와일드 카드가 적용된 경우
+ - pushAll은 `원소의 생산자(producer)`에 와일드 카드가 적용된 경우
  - popAll은 `원소의 소비자(Consumer)`에 와일드 카드가 적용된 경우
  - 추가적으로 매개변수가 소비자와 생산자 역할을 모두 한다면 와일드카드를 사용하지 말아야 한다 
  
 ## PECS (Producer-Extends,Consumer-Super)
-- 매개변수 타입에 유연성을 주기 위한 원칙
-    - = 와일드카드 타입을 사용하기 위한 원칙
+- 매개변수 타입에 유연성을 주기 위한 원칙 ( = 와일드카드 타입을 사용하기 위한 원칙)
 - 매개변수 타입 T가 `생산자라면 <? extends T>`, `소비자라면 <? super T>`
 
 ## 복잡한 예제와 함께 마무리
@@ -103,7 +102,6 @@ public static void swap(List<?> list, int i, int j);
 문제점
 - List<?> 에 넣을수 있는 원소는 null 밖에 없다..  
     - List\<E>에는 E만 넣을 수 있다 
-    - ? == null 이라고 볼수있는건가..?
 
 해결책
 - 제네릭 메서드로 helper 함수를 만들어서 타입을 알아낸다

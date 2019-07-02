@@ -2,7 +2,7 @@
 
 ### 가변인수 메서드 
 - 가변인수 메서드를 호출하면 자동적으로 가변인수들을 담기위한 배열이 만들어진다
-- 앞선 item들에서 배열(공변)과 제네릭(불공변)을 함께 사용함으로써 문제가 생기던 case들과 동잃한 문제가 발생 가능
+- 앞선 item들에서 배열(공변)과 제네릭(불공변)을 함께 사용함으로써 문제가 생기던 case들과 동일한 문제가 발생 가능
 ````
 static void dangerous(List<String>... stringLists) {
     List<Integer> intList = List.of(42);
@@ -20,7 +20,7 @@ static void dangerous(List<String>... stringLists) {
     Arrays.asList(T... a)
     Collections.addAll(Collection<? super T> c, T... elements)
     ````
-- `@SafaVarargs`
+- `@SafeVarargs`
     - 메서드에 붙는 어노테이션으로 제네릭 가변인수를 사용함으로써 필연적으로 발생하는 경고를 숨겨줌
     - 안전한 메서드인게 확실하지 않다면 붙이면 안됨 
     - 아래 두가지 조건을 만족하면 안전하다고 할 수 있다
