@@ -8,14 +8,14 @@
 ## 예시
 **Compartor 문제를 찾아보자**
 ```java
-Comparator<Integer> naturalOrder = (i, j) -> (i < j) ? -1 : (i = j ? 0 : 1);
+Comparator<Integer> naturalOrder = (i, j) -> (i < j) ? -1 : (i == j ? 0 : 1);
 ```
 
 **수정한 Comparator**
 ```java
 Comparator<Integer naturalOrder = (iBoxed, jBoxed) -> {
     int i = iBoxed, j = jBoxed; // 오토박싱
-    return i < j ? -1 : (i = j ? 0 : 1);
+    return i < j ? -1 : (i == j ? 0 : 1);
 }
 ```
 
