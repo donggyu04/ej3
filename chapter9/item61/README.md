@@ -13,7 +13,7 @@ Comparator<Integer> naturalOrder = (i, j) -> (i < j) ? -1 : (i == j ? 0 : 1);
 
 **수정한 Comparator**
 ```java
-Comparator<Integer naturalOrder = (iBoxed, jBoxed) -> {
+Comparator<Integer> naturalOrder = (iBoxed, jBoxed) -> {
     int i = iBoxed, j = jBoxed; // 오토박싱
     return i < j ? -1 : (i == j ? 0 : 1);
 }
