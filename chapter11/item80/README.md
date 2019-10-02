@@ -1,15 +1,22 @@
-# 78. 공유 중인 가변 데이터는 동기화해 사용하라.
+# 80. 쓰레드보다는 실행자, 테스크, 스트림을 애용하라.
 
-- 동기화의 기능
+- `java.util.concurrent` 패키지의 등장 및 주요 기능
+    1. 특정 테스트가 완료되기를 기다림
+    2. 테스크 중 아무거나 하나(invokeAny), 모든 테스트(invokeAll)의 완료를 기다림
+    3. 완료된 테스크의 결과를 차례로 받기
+    4. 테스크를 특정 시간, 주기로 실행
+    5. etc...
 
-  1. 일관성이 깨진 상태를 볼 수 없게 함.
-  2. 모든 이전 수정의 최종 결과를 볼 수 있도록 보장 함.
+```java
 
-> Java 언어 명세상 long과 double외의 변수를 읽고 쓰는 동작은 atomic 이다.
+ExecutorService exec = Executors.newSingleThreadExecutor();
 
-- atomic 동작? 그럼 성능 향상을 위해 atomic 동작에는 동기화를 말아야 할까?
-  1. 아주 위험한 발상
-  2. 자바 언어는 스레드가 필드를 읽을 때 **항상 수정이 완전히 반영된** 값을 얻는 것은 보장 하지만, 한 스레드가 저장한 값이 다른 스레드에게 **보이는가**는 보장하지 못함.
-  3. **동기화는 배타적 실행뿐 아니라 스레드 사이의 안정적인 통신에 꼭 필요하다.**
+// run task
+exec.execute(runnable);
 
-> Thread.stop()은 사용하지 말 것 (deprecated, 안전성 보장 못함) 
+// grace full termination
+exec.shutdown();
+
+```
+
+ - 상황에 따라 적절한 ThreadPool 구현체를 사용하면 됨.
