@@ -6,6 +6,7 @@ wait과 notify를 **올바르게** 사용하기는 아주 까다롭다. 고수�
 * ExecutorService
 * 동시성 컬렉션
 * 동기화 장치
+
 ExecutorService는 item80에서 다뤘고, 나머지 두 가지 범주에 대해 알아본다.
 
 ## 동시성 컬렉션
